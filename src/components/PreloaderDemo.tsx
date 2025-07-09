@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import Preloader from './Preloader';
 import { Button } from '@/components/ui/button';
+import { Play, Code, Gauge, Sparkles } from 'lucide-react';
 
 const PreloaderDemo = () => {
   const [showPreloader, setShowPreloader] = useState(false);
@@ -15,58 +16,75 @@ const PreloaderDemo = () => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 flex items-center justify-center">
+    <div className="min-h-screen bg-background flex items-center justify-center p-6">
       {showPreloader && (
         <Preloader 
           onComplete={handlePreloaderComplete}
-          duration={4000}
+          duration={3000}
         />
       )}
       
-      <div className="text-center space-y-6">
-        <div className="space-y-4">
-          <h1 className="text-4xl font-bold text-slate-800">
-            Tech Portfolio Preloader
+      <div className="text-center space-y-12 max-w-4xl">
+        <div className="space-y-6">
+          <div className="inline-flex items-center space-x-2 px-4 py-2 bg-muted rounded-full text-sm text-muted-foreground">
+            <Code className="w-4 h-4" />
+            <span>Portfolio Preloader</span>
+          </div>
+          
+          <h1 className="text-5xl font-bold text-foreground tracking-tight">
+            Minimalist Tech Preloader
           </h1>
-          <p className="text-xl text-slate-600 max-w-2xl">
-            A minimalist animated preloader designed for DevOps engineers, software engineers, 
-            and full stack developers. Features code brackets, terminal progress bar, 
-            and cloud infrastructure animations.
+          
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+            A clean, professional loading animation designed for developers and tech professionals. 
+            Features subtle animations and a modern aesthetic.
           </p>
         </div>
 
-        <div className="space-y-4">
+        <div className="space-y-6">
           <Button 
             onClick={handleStartDemo}
-            className="bg-slate-800 hover:bg-slate-700 text-white px-8 py-3 text-lg"
+            className="px-8 py-3 text-base h-auto rounded-lg"
             disabled={showPreloader}
           >
-            {showPreloader ? 'Loading...' : 'Start Demo'}
+            <Play className="w-4 h-4 mr-2" />
+            {showPreloader ? 'Loading...' : 'Preview Demo'}
           </Button>
           
-          <div className="text-sm text-slate-500">
-            <p>Click to see the preloader in action</p>
-            <p>Duration: 4 seconds with multiple loading stages</p>
+          <div className="text-sm text-muted-foreground space-y-1">
+            <p>Duration: 3 seconds</p>
+            <p>Optimized for professional portfolios</p>
           </div>
         </div>
 
-        <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl">
-          <div className="bg-white p-6 rounded-lg shadow-sm border">
-            <h3 className="font-semibold text-slate-800 mb-2">Code Animation</h3>
-            <p className="text-slate-600 text-sm">
-              Animated code brackets with bouncing effects and rotating deployment icons
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
+          <div className="space-y-4 text-center">
+            <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto">
+              <Sparkles className="w-6 h-6 text-primary" />
+            </div>
+            <h3 className="font-semibold text-foreground">Clean Design</h3>
+            <p className="text-muted-foreground text-sm leading-relaxed">
+              Minimalist approach with subtle animations and professional typography
             </p>
           </div>
-          <div className="bg-white p-6 rounded-lg shadow-sm border">
-            <h3 className="font-semibold text-slate-800 mb-2">Terminal Progress</h3>
-            <p className="text-slate-600 text-sm">
-              Terminal-style progress bar with gradient animation and realistic UI
+          
+          <div className="space-y-4 text-center">
+            <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto">
+              <Gauge className="w-6 h-6 text-primary" />
+            </div>
+            <h3 className="font-semibold text-foreground">Smooth Progress</h3>
+            <p className="text-muted-foreground text-sm leading-relaxed">
+              Terminal-inspired progress bar with real-time percentage display
             </p>
           </div>
-          <div className="bg-white p-6 rounded-lg shadow-sm border">
-            <h3 className="font-semibold text-slate-800 mb-2">Cloud Theme</h3>
-            <p className="text-slate-600 text-sm">
-              Particle effects, cloud icons, and professional dark theme design
+          
+          <div className="space-y-4 text-center">
+            <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto">
+              <Code className="w-6 h-6 text-primary" />
+            </div>
+            <h3 className="font-semibold text-foreground">Developer Focused</h3>
+            <p className="text-muted-foreground text-sm leading-relaxed">
+              Code-themed elements with monospace fonts and tech terminology
             </p>
           </div>
         </div>
