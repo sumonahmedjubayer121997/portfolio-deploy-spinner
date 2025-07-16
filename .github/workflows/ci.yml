@@ -1,0 +1,36 @@
+name: CI/CD on GitHub-Hosted Runner
+
+on:
+  push:
+    branches:
+      - main # Trigger only on pushes to main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    name: Build and Deploy App
+    runs-on: ubuntu-latest # GitHub-hosted runner
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set Up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Run Tests
+        run: npm test
+
+      - name: Build Project
+        run: npm run build
+
+      # Optional: deploy step — you can customize or remove
+      # - name: Deploy to Firebase / Vercel / SSH / S3 etc.
+      #   run: echo "Deploy command here"
