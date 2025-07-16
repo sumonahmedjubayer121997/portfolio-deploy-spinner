@@ -3,7 +3,7 @@ name: CI/CD on GitHub-Hosted Runner
 on:
   push:
     branches:
-      - main # Trigger only on pushes to main
+      - main
   pull_request:
     branches:
       - main
@@ -11,7 +11,7 @@ on:
 jobs:
   build-and-deploy:
     name: Build and Deploy App
-    runs-on: ubuntu-latest # GitHub-hosted runner
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout Code
@@ -25,12 +25,11 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-      - name: Run Tests
-        run: npm test
+      # ❌ Removed npm test since no test script exists
 
       - name: Build Project
         run: npm run build
 
-      # Optional: deploy step — you can customize or remove
+      # Optional deploy step
       # - name: Deploy to Firebase / Vercel / SSH / S3 etc.
       #   run: echo "Deploy command here"
